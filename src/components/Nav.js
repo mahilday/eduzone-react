@@ -165,8 +165,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   tabWidth:{
-    width: "60%",
+    width: "80%",
     margin: "0 auto",
+    display: "flex",
   },
 dwidth:{
   width: "20%"
@@ -350,7 +351,7 @@ const Header = () => {
                   <Tab className={classes.tabRoot} key={index} label={item.label} />
                 ))}
               </Tabs>
-              <Box component ="span" className={`${classes.dwidth} ${classes.dFlex}`} >
+              <Box component ="span" className={` ${classes.dwidth} ${classes.dFlex}`} >
               <Button color="inherit" className={classes.rotate}>
                 <SearchOutlined />
               </Button>
