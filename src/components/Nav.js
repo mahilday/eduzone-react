@@ -12,6 +12,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Tab,
+  Tabs,
 } from "@material-ui/core";
 import {
   Menu,
@@ -21,6 +23,10 @@ import {
   Twitter,
   LinkedIn,
   Instagram,
+  PhoneInTalkOutlined,
+  LocationOnOutlined,
+  ScheduleOutlined,
+  DraftsOutlined,
 } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -95,19 +101,83 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px",
     borderRadius: "50%",
   },
-  socialWrapper:{
-      width: "fit-content",
-     margin: "20% auto",
+  socialWrapper: {
+    width: "fit-content",
+    margin: "20% auto",
   },
-  button:{
-    "&.MuiButton-root":{
+  button: {
+    "&.MuiButton-root": {
       textTransform: "capitalize",
       color: "#fff",
-      fontSize:"12px",
+      fontSize: "12px",
       fontWeight: "600",
     },
     background: "#2ec4b6",
   },
+  // desktop specific styles
+  topNav: {
+    background: "#353866",
+    color: "#f4f4f4",
+    display: "flex",
+    justifyContent: "space-around",
+  },
+  dFlex: {
+    display: "flex",
+    flexDirection: "row",
+    padding: "0 10px",
+  },
+  icon: {
+    color: "#2ec4b6",
+    padding: "0 3px",
+  },
+  dappBar: {
+    "&.MuiAppBar-colorPrimary": {
+      backgroundColor: "#ffffff",
+      color: "#333333",
+    },
+    "&.MuiPaper-elevation4": {
+      boxShadow: "none",
+    },
+    display: "flex",
+    width: "100%",
+    padding: "5px 0",
+    justifyContent: "space-around",
+  },
+  wrapDlogo: {
+    width: "25%",
+    "@media (max-width: 1022)":{
+      width: "40%",
+    }
+    // margin: "0 auto",
+  },
+  dlogoWrapper: {
+    width: "100%",
+    height: "60%",
+  },
+  DNav: {
+    display: "flex",
+    flexDirection: "row",
+    width: "90%",
+    justifyContent: "space-around",
+    margin: "0 auto",
+    "@media (max-width: 1022)":{
+      width: "100%"
+    }
+  },
+  tabWidth:{
+    width: "60%",
+    margin: "0 auto",
+  },
+dwidth:{
+  width: "20%"
+},
+  tabRoot:{
+    "&.MuiTab-root":{
+      minWidth: "70px",
+      fontSize: "15px",
+      fontWeight: "600",
+    }
+  }
 }));
 
 const NavData = (navText, accordion, classes, expanded) => {
@@ -136,6 +206,7 @@ const NavData = (navText, accordion, classes, expanded) => {
     );
   });
 };
+
 const Header = () => {
   const {
     tabResponsiveness,
@@ -146,10 +217,13 @@ const Header = () => {
     tabView,
     mobileView,
     desktopView,
+    contact,
     drawerOpen,
     navText,
     expanded,
     accordion,
+    handleNavChange,
+    TabActive,
   } = useContext(GeneralContext);
 
   const classes = useStyles();
@@ -161,7 +235,7 @@ const Header = () => {
       tabResponsiveness();
       mobileResponsiveness();
       desktopResponsiveness();
-        });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -169,7 +243,7 @@ const Header = () => {
     <div>
       {/* mobile and tab view of the navbar */}
 
-        { !desktopView &&
+      {!desktopView && (
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar className={`${classes.spaceBetween}`}>
             <Box className={classes.logoWrapper}>
@@ -182,8 +256,10 @@ const Header = () => {
             <Box>
               <Button color="inherit" className={classes.rotate}>
                 <SearchOutlined />
-              </Button>              
-                  {(tabView && !mobileView) && <Button className={classes.button}>Apply Now</Button>}
+              </Button>
+              {tabView && !mobileView && (
+                <Button className={classes.button}>Apply Now</Button>
+              )}
               <IconButton
                 edge="end"
                 className={classes.menuButton}
@@ -201,7 +277,7 @@ const Header = () => {
                   onClose: setDrawerClose,
                 }}
                 ModalProps={{
-                  keepMounted: true, 
+                  keepMounted: true,
                 }}
               >
                 <Box className={classes.logoDrawer}>
@@ -222,10 +298,70 @@ const Header = () => {
             </Box>
           </Toolbar>
         </AppBar>
-}
+      )}
       {/* desktop View  of the navbar*/}
 
-      {!mobileView && !tabView && <div>Desktop</div>}
+      {!mobileView && !tabView && (
+        <>
+          <Box className={classes.topNav}>
+            <Box className={classes.dFlex}>
+              <Box className={classes.dFlex}>
+                <PhoneInTalkOutlined className={classes.icon} />
+                {contact.phone}
+              </Box>
+              <span>|</span>
+              <Box className={classes.dFlex}>
+                <LocationOnOutlined className={classes.icon} />
+                {contact.location}
+              </Box>
+            </Box>
+            <Box className={classes.dFlex}>
+              <Box className={classes.dFlex}>
+                <ScheduleOutlined className={classes.icon} />
+                {contact.time}
+              </Box>
+              <Box className={classes.dFlex}>
+                <DraftsOutlined className={classes.icon} />
+                {contact.email}
+              </Box>
+            </Box>
+          </Box>
+          <AppBar className={classes.dappBar} position="static">
+            <Toolbar className={classes.DNav}>
+              <Box className={classes.wrapDlogo}>
+                <Box className={classes.dlogoWrapper}>
+                  <img
+                    className={classes.logo}
+                    src={process.env.PUBLIC_URL + "/images/logo-1.png"}
+                    alt="Logo"
+                  />
+                </Box>
+              </Box>
+              <Box className = {classes.tabWidth}>
+              <Tabs
+                value={TabActive}
+                onChange={handleNavChange}
+                indicatorColor="primary"
+                textColor="primary"
+                // className={classes.tabWidth}
+                centered
+              >
+                {navText.map((item, index) => (
+                  <Tab className={classes.tabRoot} key={index} label={item.label} />
+                ))}
+              </Tabs>
+              <Box component ="span" className={`${classes.dwidth} ${classes.dFlex}`} >
+              <Button color="inherit" className={classes.rotate}>
+                <SearchOutlined />
+              </Button>
+                <Button className={classes.button}>Apply Now</Button>
+              </Box>
+            </Box>
+            
+            </Toolbar>
+          </AppBar>
+        </>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { createContext, Component, createRef } from "react";
 
 export const GeneralContext = createContext();
 const mobileVp = 592;
-const tabVp = 992;
+const tabVp = 1100;
 class GeneralContextProvider extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +12,7 @@ class GeneralContextProvider extends Component {
       tabView: false,
       drawerOpen: false,
       expanded: false,
+      TabActive: 0,
       navText: [
         { label: "Home", exact: "Home", href: "#" },
         { label: "Features", exact: "Features", href: "#" },
@@ -21,6 +22,12 @@ class GeneralContextProvider extends Component {
         { label: "Element", exact: "Element", href: "#" },
         { label: "Contact Us", exact: "Contact Us", href: "#" },
       ],
+      contact : {
+        phone: "+00 888 6668811",
+        location: "1073 W Stephen Ave, Clawson",
+        time: "Mon - Sat 8.00 - 18.00 ",
+        email: "info@example.com",
+      },
     };
   }
 
@@ -49,9 +56,13 @@ class GeneralContextProvider extends Component {
       ? this.setState((prevState) => ({ ...prevState, desktopView: true }))
       : this.setState((prevState) => ({ ...prevState, desktopView: false }));
   };
+  handleNavChange=(event, newValue)=> {
+    this.setState((prevState) => ({ ...prevState, TabActive: newValue }));
+    };
   componentDidMount() {
+    //eslint-disable-next-line
     const node = this.wrapper.current;
-    return node
+    
     /* Uses DOM node  */ 
 }
 
@@ -68,6 +79,7 @@ wrapper = createRef();
           setDrawerOpen: this.handleDrawerOpen,
           setDrawerClose: this.handleDrawerClose,
           accordion: this.handleAccordion,
+          handleNavChange: this.handleNavChange,
         }}
       >
         {this.props.children}
