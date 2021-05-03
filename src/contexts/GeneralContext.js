@@ -51,6 +51,7 @@ class GeneralContextProvider extends Component {
   };
   componentDidMount() {
     const node = this.wrapper.current;
+    return node
     /* Uses DOM node  */ 
 }
 

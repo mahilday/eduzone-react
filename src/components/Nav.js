@@ -23,7 +23,6 @@ import {
   Instagram,
 } from "@material-ui/icons";
 
-const background = "#2ec4b6"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -168,6 +167,8 @@ const Header = () => {
 
   return (
     <div>
+      {/* mobile and tab view of the navbar */}
+
         { !desktopView &&
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar className={`${classes.spaceBetween}`}>
@@ -222,7 +223,8 @@ const Header = () => {
           </Toolbar>
         </AppBar>
 }
-      {/* {tabView && <div>Tab</div>} */}
+      {/* desktop View  of the navbar*/}
+
       {!mobileView && !tabView && <div>Desktop</div>}
     </div>
   );
