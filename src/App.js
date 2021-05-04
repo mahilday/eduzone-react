@@ -1,15 +1,19 @@
-
 import "./App.scss";
-import Home from "./pages/Home"
-import GeneralContextProvider from './contexts/GeneralContext'
+// import {useEffect} from 'react'
+import Home from "./pages/Home";
+import GeneralContextProvider from "./contexts/GeneralContext";
+import HomeContextProvider from "./contexts/HomeContext";
+
 
 function App() {
   return (
-  <div className="App">
-    <GeneralContextProvider>
-    <Home />
-    </GeneralContextProvider>
-  </div>
+    <div className="App">
+      <GeneralContextProvider>
+        <HomeContextProvider>
+          <Home />
+        </HomeContextProvider>
+      </GeneralContextProvider>
+    </div>
   );
 }
 

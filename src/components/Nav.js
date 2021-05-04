@@ -14,6 +14,7 @@ import {
   AccordionDetails,
   Tab,
   Tabs,
+  ThemeProvider,
 } from "@material-ui/core";
 import {
   Menu,
@@ -28,6 +29,7 @@ import {
   ScheduleOutlined,
   DraftsOutlined,
 } from "@material-ui/icons";
+import { colorTheme } from "../themes/colorTheme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "600",
     },
     background: "#2ec4b6",
+    padding: "0 30px",
   },
   // desktop specific styles
   topNav: {
@@ -120,6 +123,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#f4f4f4",
     display: "flex",
     justifyContent: "space-around",
+    padding: ".3% 0",
+    transition: `display .2s ${theme.transitions.easing.easeInOut}`,
   },
   dFlex: {
     display: "flex",
@@ -130,6 +135,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#2ec4b6",
     padding: "0 3px",
   },
+  parentHeight: {
+    position: "sticky",
+    top: 0,
+    zIndex: 10,
+  },
   dappBar: {
     "&.MuiAppBar-colorPrimary": {
       backgroundColor: "#ffffff",
@@ -138,20 +148,23 @@ const useStyles = makeStyles((theme) => ({
     "&.MuiPaper-elevation4": {
       boxShadow: "none",
     },
+    // position: "-webkit-sticky", /* Safari */
+
     display: "flex",
     width: "100%",
     padding: "5px 0",
     justifyContent: "space-around",
   },
   wrapDlogo: {
-    width: "25%",
-    "@media (max-width: 1022)":{
+    width: "30%",
+    "@media (max-width: 1022)": {
       width: "40%",
-    }
-    // margin: "0 auto",
+    },
+    display: "flex",
+    justifyContent: "flex-end",
   },
   dlogoWrapper: {
-    width: "100%",
+    width: "75%",
     height: "60%",
   },
   DNav: {
@@ -160,25 +173,30 @@ const useStyles = makeStyles((theme) => ({
     width: "90%",
     justifyContent: "space-around",
     margin: "0 auto",
-    "@media (max-width: 1022)":{
-      width: "100%"
-    }
+    "@media (max-width: 1022)": {
+      width: "100%",
+    },
   },
-  tabWidth:{
+  tabWidth: {
     width: "80%",
     margin: "0 auto",
     display: "flex",
+    justifyContent: "space-around",
   },
-dwidth:{
-  width: "20%"
-},
-  tabRoot:{
-    "&.MuiTab-root":{
+  dwidth: {
+    width: "20%",
+  },
+  tabRoot: {
+    "&.MuiTab-root": {
       minWidth: "70px",
       fontSize: "15px",
-      fontWeight: "600",
-    }
-  }
+      fontWeight: "750",
+    },
+  },
+  donotshow: {
+    display: "none",
+    transition: `display .2s ${theme.transitions.easing.easeInOut}`,
+  },
 }));
 
 const NavData = (navText, accordion, classes, expanded) => {
@@ -241,11 +259,11 @@ const Header = () => {
   }, []);
 
   return (
-    <div>
+    <div className={`${classes.parentHeight}`}>
       {/* mobile and tab view of the navbar */}
 
       {!desktopView && (
-        <AppBar className={classes.appBar} position="fixed">
+        <AppBar className={` ${classes.appBar}`} position="sticky">
           <Toolbar className={`${classes.spaceBetween}`}>
             <Box className={classes.logoWrapper}>
               <img
@@ -303,8 +321,8 @@ const Header = () => {
       {/* desktop View  of the navbar*/}
 
       {!mobileView && !tabView && (
-        <>
-          <Box className={classes.topNav}>
+        <ThemeProvider theme={colorTheme}>
+          <Box id="topnav" className={classes.topNav}>
             <Box className={classes.dFlex}>
               <Box className={classes.dFlex}>
                 <PhoneInTalkOutlined className={classes.icon} />
@@ -327,41 +345,49 @@ const Header = () => {
               </Box>
             </Box>
           </Box>
-          <AppBar className={classes.dappBar} position="static">
-            <Toolbar className={classes.DNav}>
-              <Box className={classes.wrapDlogo}>
-                <Box className={classes.dlogoWrapper}>
-                  <img
-                    className={classes.logo}
-                    src={process.env.PUBLIC_URL + "/images/logo-1.png"}
-                    alt="Logo"
-                  />
+          <div className={`${classes.parentHeight}`}>
+            <AppBar className={` ${classes.dappBar}`} position="sticky">
+              <Toolbar className={classes.DNav}>
+                <Box className={classes.wrapDlogo}>
+                  <Box className={classes.dlogoWrapper}>
+                    <img
+                      className={classes.logo}
+                      src={process.env.PUBLIC_URL + "/images/logo-1.png"}
+                      alt="Logo"
+                    />
+                  </Box>
                 </Box>
-              </Box>
-              <Box className = {classes.tabWidth}>
-              <Tabs
-                value={TabActive}
-                onChange={handleNavChange}
-                indicatorColor="primary"
-                textColor="primary"
-                // className={classes.tabWidth}
-                centered
-              >
-                {navText.map((item, index) => (
-                  <Tab className={classes.tabRoot} key={index} label={item.label} />
-                ))}
-              </Tabs>
-              <Box component ="span" className={` ${classes.dwidth} ${classes.dFlex}`} >
-              <Button color="inherit" className={classes.rotate}>
-                <SearchOutlined />
-              </Button>
-                <Button className={classes.button}>Apply Now</Button>
-              </Box>
-            </Box>
-            
-            </Toolbar>
-          </AppBar>
-        </>
+                <Box className={classes.tabWidth}>
+                  <Tabs
+                    value={TabActive}
+                    onChange={handleNavChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    // className={classes.tabWidth}
+                    centered
+                  >
+                    {navText.map((item, index) => (
+                      <Tab
+                        className={classes.tabRoot}
+                        key={index}
+                        label={item.label}
+                      />
+                    ))}
+                  </Tabs>
+                  <Box
+                    component="span"
+                    className={` ${classes.dwidth} ${classes.dFlex}`}
+                  >
+                    <Button color="inherit" className={classes.rotate}>
+                      <SearchOutlined />
+                    </Button>
+                    <Button className={classes.button}>Apply Now</Button>
+                  </Box>
+                </Box>
+              </Toolbar>
+            </AppBar>
+          </div>
+        </ThemeProvider>
       )}
     </div>
   );
