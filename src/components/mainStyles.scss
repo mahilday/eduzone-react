@@ -6,19 +6,14 @@
   right: 50;
   animation: round 10s alternate infinite ease-in-out;
 }
-// .rotate {
-//   width: 10%;
-//   height: 80%;
-//   transform-origin: 0% center;
-//   position: absolute;
-//   bottom: 3%;
-//   right: 0%;
-//   animation: rotate 10s linear infinite;
-// }
 .wrapper {
   height: 100vh;
   overflow-x: hidden;
   perspective: 2px;
+}
+.text{
+  font-size: 3rem;
+  font-weight: 700;
 }
 .section {
   position: relative;

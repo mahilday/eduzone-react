@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Typography,
@@ -9,7 +9,8 @@ import {
 } from "@material-ui/core";
 import { colorTheme } from "../themes/colorTheme";
 import { motion } from "framer-motion";
-import './mainStyles.scss'
+import "./mainStyles.scss";
+import { GeneralContext } from "../contexts/GeneralContext";
 
 const publicUrl = process.env.PUBLIC_URL;
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100vh",
     position: "relative",
+    background: `url(${publicUrl}/images/bg1.jpg)`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
   },
   lightTextColor: {
     color: "#fff",
@@ -58,8 +63,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  mobcenter: {
+    textAlign: "center",
+  },
   flexWork: {
-    width: "70%",
+    width: "80%",
     height: "80%",
     margin: "0 auto",
   },
@@ -75,6 +83,17 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "20px",
     },
   },
+  text: {
+    fontSize: "3rem",
+  },
+  btnText: {
+    "&.MuiButton-root": {
+      fontSize: ".8rem",
+    },
+  },
+  mobtext: {
+    fontSize: "2.5rem",
+  },
 }));
 const Main = () => {
   const variants = {
@@ -82,13 +101,9 @@ const Main = () => {
     visible: { opacity: 1 },
   };
   const classes = useStyles();
+  const { desktopView } = useContext(GeneralContext);
   return (
     <Box className={classes.container}>
-      <img
-        src={`${publicUrl}/images/bg1.jpg`}
-        className={classes.image}
-        alt="main pic"
-      />
       <Box className={`${classes.overlay} ${classes.abpositioning}`}>
         <motion.div
           className={classes.div}
@@ -100,11 +115,16 @@ const Main = () => {
           <Grid container className={`${classes.flexWork} `}>
             <Grid
               item
-              xs={10}
+              xs={12}
               sm={6}
-              className={`${classes.textFormat} ${classes.center} ${classes.lightTextColor}`}
+              className={`${classes.textFormat} ${classes.center} ${
+                !desktopView && classes.mobcenter
+              } ${classes.lightTextColor}`}
             >
-              <Typography variant="h2" gutterBottom>
+              <Typography
+                className={`${classes.text} ${!desktopView && classes.mobtext}`}
+                gutterBottom
+              >
                 Best Education for Eduzone University
               </Typography>
               <Typography variant="subtitle1" gutterBottom>
@@ -114,10 +134,12 @@ const Main = () => {
               </Typography>
               <ThemeProvider theme={colorTheme}>
                 <Grid container spacing={2}>
-                  <Grid item xs={3}>
+                  <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      className={classes.button}
+                      className={`${!desktopView && classes.btnText} ${
+                        classes.button
+                      }`}
                       color="primary"
                       disableElevation
                     >
@@ -125,10 +147,12 @@ const Main = () => {
                     </Button>
                   </Grid>
 
-                  <Grid item xs={3}>
+                  <Grid item xs={6}>
                     <Button
                       variant="outlined"
-                      className={classes.button}
+                      className={`${!desktopView && classes.btnText} ${
+                        classes.button
+                      }`}
                       color="secondary"
                     >
                       About us
@@ -137,7 +161,12 @@ const Main = () => {
                 </Grid>
               </ThemeProvider>
             </Grid>
-            <Grid item xs={8} sm={5} className={`rotate ${classes.halfImageContainer}`}>
+            <Grid
+              item
+              xs={8}
+              sm={5}
+              className={`rotate ${classes.halfImageContainer}`}
+            >
               <img
                 className={`imageRotate ${classes.halfImage}`}
                 src={`${publicUrl}/images/slide7over.png`}
