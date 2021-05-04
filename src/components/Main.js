@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   halfImageContainer: {},
   halfImage: {
     position: "absolute",
-    bottom: 0,
+    bottom: -5,
     right: 80,
     width: "50vw",
   },

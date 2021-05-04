@@ -1,2 +1,2 @@
-export {default as GeneralContextProvider} from './GeneralContext';
-export {default as HomeContextProvider} from './HomeContext'
+export {default as GeneralContext} from './GeneralContext';
+export {default as HomeContext} from './HomeContext'

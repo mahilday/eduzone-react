@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Main} from '../components/index';
+import {Header, Main, Popular} from '../components/index';
 import {makeStyles} from '@material-ui/core'
 
 const useStyles = makeStyles((theme)=>({
@@ -7,14 +7,15 @@ const useStyles = makeStyles((theme)=>({
         flexGrow: 1,
         marginTop: 0,
         height: 500,
-      },
+      }
 }))
 function Home () {
         const classes = useStyles()
         return ( 
-            <div className = {classes.parentHeight}>
+            <div>
                <Header /> 
                <Main />
+               <div style={{marginTop: "-10vh"}}><Popular /></div>
             </div>
          );
 }
