@@ -55,8 +55,8 @@ export default function CardComponent(props) {
         </Typography>
       </CardContent>
       <Divider />
-      <CardActions style={{display: "flex", flexDirection: "row"}} disableSpacing>
-        <div >
+      <CardActions style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}} disableSpacing>
+        <div style={{display: "flex", flexDirection: "row"}} >
         <IconButton aria-label="add to favorites">
           <Group />
         </IconButton>
