@@ -13,18 +13,35 @@ import { colorTheme } from "../themes/colorTheme";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    width: "23%",
+    margin: "3% 1%",
+    "&.MuiPaper-elevation1":{
+      boxShadow: "2px 2px 10px #33333322"
+    }
+  },
+  tabroot: {
+    width: "40vw",
+  },
+  mobileroot: {
+    width: "90vw",
   },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
   },
+  pricebtn:{
+    background: "#DAA610", 
+    borderRadius: "5px",
+    padding: "2px 6px",
+    fontWeight: "700"
+  }
 }));
 
 export default function CardComponent(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={`${classes.root} ${props.tabView? classes.tabroot: ''} ${props.mobileView? classes.mobileroot: ''}`}>
       <CardMedia
         className={classes.media}
         image={props.image}
@@ -46,9 +63,9 @@ export default function CardComponent(props) {
           <Group color="primary"/>
         </IconButton>
         </ThemeProvider>
-        <p>{props.studentNum}</p>
+        <p>{props.studentNum} Students</p>
         </div>
-        <p>{props.price}</p>
+        <p className={classes.pricebtn}>{props.price}</p>
       </CardActions>
     </Card>
   );

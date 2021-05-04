@@ -2,6 +2,7 @@ import { Typography, makeStyles, Grid, Box } from "@material-ui/core";
 import React, { useContext } from "react";
 import { CardComponent } from "./index";
 import { HomeContext } from "../contexts/HomeContext";
+import { GeneralContext } from "../contexts/GeneralContext";
 
 const useStyles = makeStyles((theme) => ({
   popular: {
@@ -16,21 +17,28 @@ const useStyles = makeStyles((theme) => ({
   padcenter: {
     margin: "0 auto",
   },
+  btmMarg: {
+    margin: "2% 0",
+  },
   popCourse: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     flexWrap: "wrap",
-    width: "70%",
-    margin: "3% auto",
+    width: "80%",
+    margin: "0 auto",
+  },
+  tabPop: {
+    width: "90%",
   },
 }));
 const Popular = () => {
   const classes = useStyles();
   const { popularCourses } = useContext(HomeContext);
+  const { mobileView, tabView } = useContext(GeneralContext);
   return (
     <div className={classes.popular}>
       <Grid container>
-        <Grid className={classes.padcenter} item xs={10} sm={4}>
+        <Grid className={classes.padcenter} item xs={10} sm={8} md={6}>
           <Typography variant="h2" gutterBottom>
             Popular Courses
           </Typography>
@@ -41,9 +49,17 @@ const Popular = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Box className={classes.popCourse} my={3}>
+      <Box
+        className={`${classes.popCourse} ${
+          tabView || mobileView ? classes.tabPop : ""
+        }`}
+        my={3}
+      >
         {popularCourses.map((pop, index) => (
           <CardComponent
+            className={classes.btmMarg}
+            mobileView={mobileView}
+            tabView={tabView}
             key={index}
             title={pop.title}
             image={pop.imageUrl}

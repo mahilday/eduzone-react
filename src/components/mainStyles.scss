@@ -15,6 +15,20 @@
 //   right: 0%;
 //   animation: rotate 10s linear infinite;
 // }
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  perspective: 2px;
+}
+.section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 0 5px #000;
+}
 @keyframes round {
   0% {
     transform: translate(0, -5%);
