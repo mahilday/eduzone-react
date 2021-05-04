@@ -1,7 +1,7 @@
-import { Typography, makeStyles, Grid } from "@material-ui/core";
-import React, {useContext} from "react";
-import {CardComponent} from './index'
-import {HomeContext} from '../contexts/HomeContext'
+import { Typography, makeStyles, Grid, Box } from "@material-ui/core";
+import React, { useContext } from "react";
+import { CardComponent } from "./index";
+import { HomeContext } from "../contexts/HomeContext";
 
 const useStyles = makeStyles((theme) => ({
   popular: {
@@ -13,13 +13,20 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-5vh",
     zIndex: "2",
   },
-  padcenter:{
-      margin: "0 auto",
+  padcenter: {
+    margin: "0 auto",
+  },
+  popCourse: {
+    display: "flex",
+    justifyContent: "space-around",
+    flexWrap: "wrap",
+    width: "70%",
+    margin: "3% auto",
   },
 }));
 const Popular = () => {
   const classes = useStyles();
-  const {popularCourses} = useContext(HomeContext)
+  const { popularCourses } = useContext(HomeContext);
   return (
     <div className={classes.popular}>
       <Grid container>
@@ -34,12 +41,18 @@ const Popular = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
-          {popularCourses.map((pop, index)=>(
-              <CardComponent key={index} title={pop.title} image={pop.imageUrl} description={pop.description} price={pop.price} studentNum={pop.studentNum} />
-          ))}
-        
-      </Grid>
+      <Box className={classes.popCourse} my={3}>
+        {popularCourses.map((pop, index) => (
+          <CardComponent
+            key={index}
+            title={pop.title}
+            image={pop.imageUrl}
+            description={pop.description}
+            price={pop.price}
+            studentNum={pop.studentNum}
+          />
+        ))}
+      </Box>
     </div>
   );
 };
