@@ -36,9 +36,12 @@ const useStyles = makeStyles((theme) => ({
   halfImageContainer: {},
   halfImage: {
     position: "absolute",
-    bottom: -5,
+    bottom: -2,
     right: 80,
     width: "50vw",
+  },
+  imga:{
+    width: "70vw",
   },
   overlay: {
     background: "rgba(0,0,0,0.6)",
@@ -60,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
   center: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  rowcenter:{
+    display: "flex",
+    // flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -116,7 +125,8 @@ const Main = () => {
             <Grid
               item
               xs={12}
-              sm={6}
+              sm={12}
+              lg={6}
               className={`${classes.textFormat} ${classes.center} ${
                 !desktopView && classes.mobcenter
               } ${classes.lightTextColor}`}
@@ -133,8 +143,8 @@ const Main = () => {
                 occaecat aliquip in incididunt.
               </Typography>
               <ThemeProvider theme={colorTheme}>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
+                <Grid container spacing={2} className={` ${classes.rowcenter}`}>
+                  <Grid item xs={6} md={3} lg={3}>
                     <Button
                       variant="contained"
                       className={`${!desktopView && classes.btnText} ${
@@ -147,7 +157,7 @@ const Main = () => {
                     </Button>
                   </Grid>
 
-                  <Grid item xs={6}>
+                  <Grid item xs={6} md={3} lg={3}>
                     <Button
                       variant="outlined"
                       className={`${!desktopView && classes.btnText} ${
@@ -168,7 +178,7 @@ const Main = () => {
               className={`rotate ${classes.halfImageContainer}`}
             >
               <img
-                className={`imageRotate ${classes.halfImage}`}
+                className={`imageRotate ${!desktopView && classes.imga} ${classes.halfImage}`}
                 src={`${publicUrl}/images/slide7over.png`}
                 alt="floater"
               />
