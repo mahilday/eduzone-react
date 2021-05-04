@@ -76,7 +76,7 @@ text:{
 }));
 const Parallax = (props) => {
   const classes = useStyles(props);
-  const {mobileView, tabView, desktopView} = useContext(GeneralContext)
+  const {desktopView} = useContext(GeneralContext)
   return (
     <div className={classes.wrapper}>
       <div className={classes.parallaxWrapper}>
