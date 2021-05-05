@@ -1,26 +1,5 @@
 import React from 'react';
-const teacherObj = [
-    {
-        image:`${process.env.PUBLIC_URL}/images/teach1.jpg`,
-        name: "Nashid Martinez",
-        role: "Director",
-    },
-    {
-        image:`${process.env.PUBLIC_URL}/images/teach2.jpg`,
-        name: "Konne Blackfield",
-        role: "Designer",
-    },
-    {
-        image:`${process.env.PUBLIC_URL}/images/teach3.jpg`,
-        name: "Hackson Willingham",
-        role: "Developer",
-    },
-    {
-        image:`${process.env.PUBLIC_URL}/images/teach5.jpg`,
-        name: "Dunez Boni",
-        role: "Manager",
-    },
-]
+
 const Teacher = ({teacherObj, title, description}) => {
     return ( 
         <div className="section-full bg-gray content-inner">
