@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { colorTheme } from "../themes/colorTheme";
 import { motion } from "framer-motion";
+import {Link} from 'react-router-dom'
 import "./mainStyles.scss";
 import { GeneralContext } from "../contexts/GeneralContext";
 
@@ -167,11 +168,14 @@ const Main = () => {
                   </Grid>
 
                   <Grid item xs={6} md={3} lg={3}>
+
                     <Button
                       variant="outlined"
                       className={`${!desktopView && classes.btnText} ${
                         classes.button
                       }`}
+                      component={Link}
+                      to="/about"
                       color="secondary"
                     >
                       About us
