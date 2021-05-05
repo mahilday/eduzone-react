@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Main, Popular, Parallax, Services, Status,Teacher, Footer, Testimonial, BlogComponent} from '../components/index';
+import { Main, Popular, Parallax, Services, Status,Teacher, Testimonial, BlogComponent} from '../components/index';
 // import {makeStyles} from '@material-ui/core'
 
 // const useStyles = makeStyles((theme)=>({
@@ -14,8 +14,7 @@ import {Header, Main, Popular, Parallax, Services, Status,Teacher, Footer, Testi
 function Home () {
         // const classes = useStyles()
         return ( 
-            <div>
-               <Header /> 
+            <div> 
                <Main />
                <Popular />
                <Parallax />
@@ -24,7 +23,6 @@ function Home () {
                <Teacher />
                <Testimonial />
                <BlogComponent />
-               <Footer />
             </div>
          );
 }

@@ -30,7 +30,9 @@
 .App-link {
   color: #61dafb;
 }
-
+a:hover {
+  color: #cccccc;
+}
 @keyframes display {
   to {
     display: none;

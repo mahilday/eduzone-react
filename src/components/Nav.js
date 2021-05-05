@@ -30,6 +30,7 @@ import {
   DraftsOutlined,
 } from "@material-ui/icons";
 import { colorTheme } from "../themes/colorTheme";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -219,7 +220,7 @@ const NavData = (navText, accordion, classes, expanded) => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="subtitle1">{exact}</Typography>
+          <Typography variant="subtitle1"><Link to={href}>{exact}</Link></Typography>
         </AccordionDetails>
       </Accordion>
     );
@@ -367,11 +368,14 @@ const Header = () => {
                     centered
                   >
                     {navText.map((item, index) => (
-                      <Tab
+                     
+                        <Tab
                         className={classes.tabRoot}
                         key={index}
+                        component={Link}
+                        to={item.href}
                         label={item.label}
-                      />
+                    />
                     ))}
                   </Tabs>
                   <Box

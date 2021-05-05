@@ -14,9 +14,9 @@ class GeneralContextProvider extends Component {
       expanded: false,
       TabActive: 0,
       navText: [
-        { label: "Home", exact: "Home", href: "#" },
-        { label: "Features", exact: "Features", href: "#" },
-        { label: "Pages", exact: "Pages", href: "#" },
+        { label: "Home", exact: "Home", href: "/" },
+        { label: "Services", exact: "Services", href: "/services" },
+        { label: "About", exact: "About", href: "/about" },
         { label: "Shop", exact: "Shop", href: "#" },
         { label: "Blog", exact: "Blog", href: "#" },
         { label: "Element", exact: "Element", href: "#" },
