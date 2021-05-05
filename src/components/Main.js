@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     right: 80,
     width: "50vw",
   },
-  imga:{
+  imga: {
     width: "70vw",
   },
   overlay: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  rowcenter:{
+  rowcenter: {
     display: "flex",
     // flexDirection: "column",
     justifyContent: "center",
@@ -126,26 +126,33 @@ const Main = () => {
               item
               xs={12}
               sm={12}
-              md={10}
+              md={12}
               lg={6}
               className={`${classes.textFormat} ${classes.center} ${
                 !desktopView && classes.mobcenter
               } ${classes.lightTextColor}`}
             >
               <Typography
-
                 className={`${classes.text} ${!desktopView && classes.mobtext}`}
                 gutterBottom
               >
-              Best Education for Eduzone University
+                Best Education for Eduzone University
               </Typography>
-              <Typography variant="subtitle1" className="text-white" gutterBottom>
+              <Typography
+                variant="subtitle1"
+                className="text-white"
+                gutterBottom
+              >
                 Esse amet labore duis excepteur excepteur duis enim aute aliqua
                 velit. Irure qui occaecat laborum nisi laboris. Ullamco ullamco
                 occaecat aliquip in incididunt.
               </Typography>
               <ThemeProvider theme={colorTheme}>
-                <Grid container spacing={2} className={` ${!desktopView && classes.rowcenter}`}>
+                <Grid
+                  container
+                  spacing={2}
+                  className={` ${!desktopView && classes.rowcenter}`}
+                >
                   <Grid item xs={6} md={3} lg={3}>
                     <Button
                       variant="contained"
@@ -180,7 +187,9 @@ const Main = () => {
               className={`rotate ${classes.halfImageContainer}`}
             >
               <img
-                className={`imageRotate ${!desktopView && classes.imga} ${classes.halfImage}`}
+                className={`imageRotate ${!desktopView && classes.imga} ${
+                  classes.halfImage
+                }`}
                 src={`${publicUrl}/images/slide7over.png`}
                 alt="floater"
               />
