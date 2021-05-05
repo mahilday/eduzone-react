@@ -21,13 +21,13 @@ const teacherObj = [
         role: "Manager",
     },
 ]
-const Teacher = () => {
+const Teacher = ({teacherObj, title, description}) => {
     return ( 
         <div className="section-full bg-gray content-inner">
 				<div className="container">
 					<div className="section-head text-center ">
-						<h2 className="title"> Meet The Teacher</h2>
-						<p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+						<h2 className="title">{title}</h2>
+						<p>{description}</p>
 					</div>
                     <div className = "row">
                     {teacherObj.map(item=>(

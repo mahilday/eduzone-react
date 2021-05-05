@@ -3,6 +3,7 @@ import {useEffect} from 'react'
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ServicesPage from "./pages/Services";
+import TeachersPage from "./pages/Teacher";
 import GeneralContextProvider from "./contexts/GeneralContext";
 import HomeContextProvider from "./contexts/HomeContext";
 import {
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/services">
             <ServicesPage />
+          </Route>
+          <Route path="/teachers">
+            <TeachersPage />
           </Route>
           <Route path="/">
             <Home />

@@ -17,12 +17,12 @@ class GeneralContextProvider extends Component {
         { label: "Home", exact: "Home", href: "/" },
         { label: "Services", exact: "Services", href: "/services" },
         { label: "About", exact: "About", href: "/about" },
-        { label: "Shop", exact: "Shop", href: "#" },
+        { label: "Teachers", exact: "Teachers", href: "/teachers" },
         { label: "Blog", exact: "Blog", href: "#" },
         { label: "Element", exact: "Element", href: "#" },
         { label: "Contact Us", exact: "Contact Us", href: "#" },
       ],
-      contact : {
+      contact: {
         phone: "+00 888 6668811",
         location: "1073 W Stephen Ave, Clawson",
         time: "Mon - Sat 8.00 - 18.00 ",
@@ -38,7 +38,7 @@ class GeneralContextProvider extends Component {
     this.setState((prevState) => ({ ...prevState, drawerOpen: false }));
   };
   handleAccordion = (panel) => (event, isExpanded) => {
-    this.setState((prevState)=>({ expanded: isExpanded ? panel : false }));
+    this.setState((prevState) => ({ expanded: isExpanded ? panel : false }));
   };
 
   setMobileResponsiveness = () => {
@@ -56,21 +56,22 @@ class GeneralContextProvider extends Component {
       ? this.setState((prevState) => ({ ...prevState, desktopView: true }))
       : this.setState((prevState) => ({ ...prevState, desktopView: false }));
   };
-  handleNavChange=(event, newValue)=> {
+  handleNavChange = (event, newValue) => {
     this.setState((prevState) => ({ ...prevState, TabActive: newValue }));
-    };
+  };
   componentDidMount() {
     //eslint-disable-next-line
     const node = this.wrapper.current;
-    
-    /* Uses DOM node  */ 
-}
 
-wrapper = createRef();
+    /* Uses DOM node  */
+  }
+
+  wrapper = createRef();
 
   render() {
     return (
-      <GeneralContext.Provider ref={this.wrapper}
+      <GeneralContext.Provider
+        ref={this.wrapper}
         value={{
           ...this.state,
           tabResponsiveness: this.setTabResponsiveness,
