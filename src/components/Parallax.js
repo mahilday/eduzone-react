@@ -16,13 +16,12 @@ const useStyles = makeStyles((props) => ({
     height: "inherit",
     display: "flex",
     flexDirection: "row",
-
     background: "#00008b78",
     color: "#fff",
   },
   space: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
   },
   marginItem:{
@@ -51,10 +50,6 @@ const useStyles = makeStyles((props) => ({
   },
   form: {
     display: "flex",
-    flexGrow: 1,
-    // flexDirection:"column",
-    justifyContent: "center",
-    padding: "50px",
     background: "#fff",
     borderRadius: "10px",
     margin: "5% 0",
@@ -81,23 +76,22 @@ const Parallax = (props) => {
     <div className={classes.wrapper}>
       <div className={classes.parallaxWrapper}>
         <Grid container className={classes.space}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={10} md={10} lg={6} >
             <Typography className={classes.text}>
               Create your free account now and get immediate access to hundreds of
               online courses.
             </Typography>
-
+            <Grid item xs={10} md={8} lg={6} className={`${classes.form} ${!desktopView && classes.formMob}`} >
             <form className={`${classes.form} ${!desktopView && classes.formMob}`} noValidate autoComplete="off">
-              <Grid item xs={10} className={` ${classes.marginItem}`}>
+              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
                 <TextField
                   fullWidth
-                  
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={10} className={` ${classes.marginItem}`}>
+              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
                 <TextField
                   fullWidth
                   id="outlined-basic"
@@ -105,7 +99,7 @@ const Parallax = (props) => {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={10} className={` ${classes.marginItem}`}>
+              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
                 <Button
                   className={`${classes.button}` }
                   color="primary"
@@ -115,6 +109,7 @@ const Parallax = (props) => {
                 </Button>
               </Grid>
             </form>
+            </Grid>
           </Grid>
 
           { desktopView && <Box>
