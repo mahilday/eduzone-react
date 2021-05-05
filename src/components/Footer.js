@@ -31,31 +31,28 @@ const useStyles = makeStyles((theme) => ({
 // };
 const subscribeToEmail = (classes) => {
   return (
-    <div className={classes.subscribe}>
-      <div className={`${classes.subCont} container`}>
-        <section className={classes.writeup}>
-          <h4>Subscribe To Our NewsLetter</h4>
-          <p>
-            Ea non in magna est sint consectetur quis culpa. Incididunt
-            cupidatat consequat excepteur excepteur minim non tempor duis
-            aliquip officia. Elit consectetur in ullamco ipsum reprehenderit
-            ullamco qui consequat. Cupidatat velit mollit ad commodo eiusmod et
-            duis ut Lorem non.
-          </p>
-        </section>
-        <section className={classes.submail}>
-          <h4 className="text-white">Your Email Address</h4>
-          <div>
-            <input
-              type="text"
-              className="input"
-              placeholder="Your Email Address"
-            />
-            <button className="btnSub">Subscribe</button>
-          </div>
-        </section>
-      </div>
-    </div>
+    <div class="section-full p-tb50 bg-primary text-white">
+		<div class="container">
+			<div class="row align-items-center" style ={{textAlign: "left"}}>
+				<div class="col-md-7 m-md-b30">
+					<h4>Subscribe To Our Newsletter</h4>
+					<p class="m-b0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
+				</div>
+				<div class="col-md-5">
+					<h4>Your Email Address</h4>
+					<form class="dzSubscribe style1" action="script/mailchamp.php" method="post">
+						<div class="dzSubscribeMsg"></div>
+						<div class="input-group">
+							<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email Address"/>
+							<div class="input-group-addon">
+								<button name="submit" value="Submit" type="submit" class="site-button-secondry btnhover13">Subscribe</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
   );
 };
 const main = () => {

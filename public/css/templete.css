@@ -5,6 +5,14 @@
 .dis-block{ 
 	display:block;
 }
+#imgLoader {
+	position: fixed;
+    left: 50%;
+    top: 40%;
+    z-index: 1000;
+	width: 100px;
+	height: 100px;
+}
 .bg-img-fix {
     background-attachment: fixed;
     background-size: cover;

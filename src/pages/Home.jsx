@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Main, Popular, Parallax, Footer} from '../components/index';
+import {Header, Main, Popular, Parallax, Services, Status,Teacher, Footer, Testimonial, BlogComponent} from '../components/index';
 // import {makeStyles} from '@material-ui/core'
 
 // const useStyles = makeStyles((theme)=>({
@@ -19,6 +19,11 @@ function Home () {
                <Main />
                <Popular />
                <Parallax />
+               <Services />
+               <Status />
+               <Teacher />
+               <Testimonial />
+               <BlogComponent />
                <Footer />
             </div>
          );

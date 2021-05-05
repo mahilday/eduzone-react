@@ -25,8 +25,14 @@ input{
   color:#fff;
   background: #353866;
 }
+.text-white{
+  color: #fff;
+}
 p{
   font-size: 16px;
+}
+.overlay-black-dark::after{
+  background-color: #353866;
 }
 .imageRotate {
 //   width: 40vw;

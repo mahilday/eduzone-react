@@ -1,126 +1,45 @@
-import React, { useContext } from "react";
-import {
-  Grid,
-  Box,
-  Button,
-  TextField,
-  Typography,
-  makeStyles,
-} from "@material-ui/core";
-import { GeneralContext } from "../contexts/GeneralContext";
+import React from "react";
 
-const useStyles = makeStyles((props) => ({
-  parallaxWrapper: {
-    position: "absolute",
-    width: "100%",
-    height: "inherit",
-    display: "flex",
-    flexDirection: "row",
-    background: "#00008b78",
-    color: "#fff",
-  },
-  space: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  marginItem:{
-    margin:"0 .3vw",
-  },
-  wrapper: {
-    background: `url(${process.env.PUBLIC_URL}/images/paraBg.jpg)`,
-    height: "50vh",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center 50px",
-    backgroundAttachment: "fixed",
-    position: "relative",
-  },
-  button: {
-    color: "#fff",
-    width: "100%",
-    "&.MuiButton-root": {
-      textTransform: "capitalize",
-      fontSize: "20px",
-    },
-    "&.MuiButton-contained": {
-      boxShadow: "none",
-      padding: "11px 70px",
-    },
-  },
-  form: {
-    display: "flex",
-    background: "#fff",
-    borderRadius: "10px",
-    margin: "5% 0",
-  },
-  formMob:{
-    flexDirection:"column",
-  },
-text:{
-    fontSize:"2rem",
-}
-//   textField: {
-//       display:"flex",
-//     "&.MuiInputBase-input": {
-//       background: "#ccc",
-//       fontSize: "14px",
-//       margin: "0 20px",
-//     },
-//   },
-}));
+
+
 const Parallax = (props) => {
-  const classes = useStyles(props);
-  const {desktopView} = useContext(GeneralContext)
+ 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.parallaxWrapper}>
-        <Grid container className={classes.space}>
-          <Grid item xs={10} md={10} lg={6} >
-            <Typography className={classes.text}>
-              Create your free account now and get immediate access to hundreds of
-              online courses.
-            </Typography>
-            <Grid item xs={10} md={8} lg={6} className={`${classes.form} ${!desktopView && classes.formMob}`} >
-            <form className={`${classes.form} ${!desktopView && classes.formMob}`} noValidate autoComplete="off">
-              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
-                <TextField
-                  fullWidth
-                  id="outlined-basic"
-                  label="Name"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
-                <TextField
-                  fullWidth
-                  id="outlined-basic"
-                  label="Email"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={10} md={10} className={` ${classes.marginItem}`}>
-                <Button
-                  className={`${classes.button}` }
-                  color="primary"
-                  variant="contained"
-                >
-                  Subscribe
-                </Button>
-              </Grid>
-            </form>
-            </Grid>
-          </Grid>
-
-          { desktopView && <Box>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/para1.png`}
-              alt="para"
-            />
-          </Box>}
-        </Grid>
-      </div>
-    </div>
+    // 
+    <div class="section-full bg-img-fix content-inner-2 overlay-black-dark contact-action style2" style={{backgroundImage:`url(${process.env.PUBLIC_URL}/images/paraBg.jpg)`, textAlign:"left",}}>
+				<div class="container">
+					<div class="row relative">
+						<div class="col-md-12 col-lg-8 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+							<div class="contact-no-area">
+								<h2 class="title">Create your free account now and get immediate access to 100s of online courses.</h2>
+								<form action="script/mailchamp.php" method="post" class="dzSubscribe subscribe-box row align-items-center sp15">
+									<div class="col-lg-12">
+										<div class="dzSubscribeMsg"></div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="input-group">
+											<input name="dzName" required="required" type="text" class="form-control" placeholder="Your Name " />
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="input-group">
+											<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email Address" />
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="input-group">
+											<button name="submit" value="Submit" type="submit" class="site-button btn-block btnhover13">Subscribe</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-12 col-lg-4 contact-img-bx wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+							<img src={`${process.env.PUBLIC_URL}/images/para1.png`} alt="" />	
+						</div>
+					</div>
+				</div>
+			</div>
   );
 };
 
