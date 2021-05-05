@@ -126,7 +126,7 @@ const Main = () => {
               item
               xs={12}
               sm={12}
-              md={7}
+              md={10}
               lg={6}
               className={`${classes.textFormat} ${classes.center} ${
                 !desktopView && classes.mobcenter
