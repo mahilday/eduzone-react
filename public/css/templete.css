@@ -13,6 +13,11 @@
   width: 50px;
   height: 50px;
 }
+@media screen and (max-width: 700px){
+	#imgLoader{
+		left: 40%;
+	}
+}
 .bg-img-fix {
   background-attachment: fixed;
   background-size: cover;
